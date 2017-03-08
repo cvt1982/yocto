@@ -41,3 +41,5 @@ mkdir -p build/conf
 ln -s $YOCTO_ROOT/yocto-conf/conf/bblayers.conf build/conf/bblayers.conf
 ln -s $YOCTO_ROOT/yocto-conf/conf/local.conf    build/conf/local.conf
 ln -s $YOCTO_ROOT/yocto-conf/conf/site.conf     build/conf/site.conf
+
+source oe-init-build-env
