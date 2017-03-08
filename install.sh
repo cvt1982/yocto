@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Abort on error
+set -e
+
 ORG=$(pwd)
 
 # Get yocto base repository
@@ -11,7 +14,7 @@ git checkout jethro
 YOCTO_ROOT=$(pwd)
 
 git clone git://git.yoctoproject.org/meta-raspberrypi
-cd meta-taspberrypi
+cd meta-raspberrypi
 git checkout jethro
 
 cd $YOCTO_ROOT
@@ -25,3 +28,16 @@ cd $YOCTO_ROOT
 git clone git://git.openembedded.org/meta-openembedded
 cd meta-openembedded
 git checkout jethro
+
+cd $YOCTO_ROOT
+
+git clone https://github.com/cvt1982/yocto-meta.git
+git clone https://github.com/cvt1982/yocto-conf.git
+
+cd $YOCTO_ROOT
+
+# Create symlinks to build/conf
+mkdir -p build/conf
+ln -s yocto-conf/conf/bblayers.conf build/conf/bblayers.conf
+ln -s yocto-conf/conf/local.conf    build/conf/local.conf
+ln -s yocto-conf/conf/site.conf     build/conf/site.conf
